@@ -18,25 +18,32 @@
     
     <h1>Assignment 1: Basic PHP CRUD</h1>
     
-<?php
-// Connect to server
-$SERVER = "localhost";
-$USER = "root";
-$PW = "";
-$PORT = 3333;
-$DB = "TJK_NEHD_Ass1";
+    <?php
+    // Connect to server
+    $SERVER = "localhost";
+    $USER = "root";
+    $PW = "";   // password
+    $PORT = 3333;
+    $DB = "TJK_NEHD_Ass1";
 
-try {
-  $conn = new PDO("mysql:host=$SERVER;port=$PORT;dbname=$DB",$USER,$PW);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  //echo "Connected successfully.";
-}
-catch(PDOException $e)
-{
-  echo "COULD NOT CONNECT: " . $e->getMessage();
-}
-?>
+    try {
+      $SQLconn = new PDO("mysql:host=$SERVER;port=$PORT;dbname=$DB",$USER,$PW);
+      // set the PDO error mode to exception:
+      $SQLconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //echo "Connected successfully.";
+      
+      // Use prepared statements to help sanitization
+      $Statement = $SQLconn->prepare("SELECT * FROM Data");
+      $Statement->execute();
+      
+      $Statement->setFetchMode(PDO::FETCH_ASSOC);
+      $Result = $Statement->fetchAll();
+      //print_r(count($Result[0]));
+    }
+    catch(PDOException $e) {
+      echo "ERROR: " . $e->getMessage();
+    }
+    ?>
     
     <h2>SQL Data:</h2>
     <div class="table-responsive">
@@ -49,19 +56,25 @@ catch(PDOException $e)
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Joe Schmoe</td>
-            <td>5192220160</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Joe Schmoe</td>
-            <td>5192220160</td>
-          </tr>
+          <?php
+          for($x=0; $x<count($Result); $x++){
+            echo "<tr>";
+            echo "<td>" . $x . "</td>";
+            for($y=1; $y<count($Result[$x]); $y++){ // ignore first value
+              echo "<td>";
+              echo array_values($Result[$x])[$y] ;
+              echo "</td>";
+            }
+            echo "</tr>";
+          }
+          ?>
         </tbody>
       </table>
     </div>
+    
+    <?php
+    $SQLconn = null;  // close connection
+    ?>
     
   </body>
 </html>

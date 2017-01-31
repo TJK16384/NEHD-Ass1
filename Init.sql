@@ -4,7 +4,7 @@ CREATE SCHEMA `tjk_nehd_ass1` DEFAULT CHARACTER SET utf8 ;
 CREATE TABLE `tjk_nehd_ass1`.`data` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
-  `phone` INT NULL,
+  `phone` VARCHAR(9) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
 
