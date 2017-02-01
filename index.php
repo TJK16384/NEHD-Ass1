@@ -4,10 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
-    <title>Assignment 1: Basic PHP CRUD</title>
+    <title>
+      <?php
+      $Title = "N.E.H.D. Assignment 1: Basic PHP+MySQL CRUD";
+      echo $Title;
+      ?>
+    </title>
     
     <!-- <link rel="stylesheet" href="./css/normalize.min.css" /> -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/Style.css" />
     
     <script src="./js/jquery.slim.min.js"></script>
     <script src="./js/tether.min.js"></script>
@@ -16,65 +22,25 @@
   
   <body>
     
-    <h1>Assignment 1: Basic PHP CRUD</h1>
-    
-    <?php
-    // Connect to server
-    $SERVER = "localhost";
-    $USER = "root";
-    $PW = "";   // password
-    $PORT = 3333;
-    $DB = "TJK_NEHD_Ass1";
-
-    try {
-      $SQLconn = new PDO("mysql:host=$SERVER;port=$PORT;dbname=$DB",$USER,$PW);
-      // set the PDO error mode to exception:
-      $SQLconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      //echo "Connected successfully.";
-      
-      // Use prepared statements to help sanitization
-      $Statement = $SQLconn->prepare("SELECT * FROM Data");
-      $Statement->execute();
-      
-      $Statement->setFetchMode(PDO::FETCH_ASSOC);
-      $Result = $Statement->fetchAll();
-      //print_r(count($Result[0]));
-    }
-    catch(PDOException $e) {
-      echo "ERROR: " . $e->getMessage();
-    }
-    ?>
+    <h1><?php echo $Title; ?></h1>
     
     <h2>SQL Data:</h2>
     <div class="table-responsive">
-      <table class="table table-striped">
+      <!-- <table class="table table-striped"> -->
+      <table class="table-striped">
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Phone #</th>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
-          <?php
-          for($x=0; $x<count($Result); $x++){
-            echo "<tr>";
-            echo "<td>" . $x . "</td>";
-            for($y=1; $y<count($Result[$x]); $y++){ // ignore first value
-              echo "<td>";
-              echo array_values($Result[$x])[$y] ;
-              echo "</td>";
-            }
-            echo "</tr>";
-          }
-          ?>
+          <?php require "fetch.php"; ?>
         </tbody>
       </table>
     </div>
-    
-    <?php
-    $SQLconn = null;  // close connection
-    ?>
     
   </body>
 </html>

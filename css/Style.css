@@ -1,0 +1,19 @@
+tr {
+  border-bottom: 1px solid #eee;
+}
+tr > * {
+  border-left: 1px solid #bbb;
+  padding: 7px 12px;
+  vertical-align: middle;
+}
+
+th {
+  border-bottom: 1px solid #bbb;
+}
+td:first-child  {
+  text-align: right;
+}
+
+.Change .btn {
+  margin: 0 2px;
+}
