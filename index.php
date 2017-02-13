@@ -1,3 +1,5 @@
+<?php require "SQL.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,35 +30,40 @@
     <h2>SQL Data:</h2>
     <div class="table-responsive">
       <!-- <table class="table table-striped"> -->
-      <table class="table-striped">
+      <table class="table-striped table-bordered">
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Phone #</th>
             <th>
-              <button type='button' class='btn btn-success'>Add Entry</button>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Dialog_Add">
+                Add Entry
+              </button>
             </th>
           </tr>
         </thead>
         <tbody>
-          <?php require "fetch.php"; ?>
+          <!-- Database rows go here -->
+          <?php require "Read.php"; ?>
         </tbody>
       </table>
     </div>
     
     <!-- Popup for adding a new entry -->
-    <div id="Dialog_AddRow" class="modal" style="display:block">
-      <div class="modal-dialog">
+    <div id="Dialog_Add" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Add a New Entry to the Database</h4>
+            <h3 class="modal-title">Add a New Entry to the Database</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           
           <div class="modal-body">
             <!-- FORM STARTS HERE -->
-            <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <form class="form-horizontal" action="Create.php" method="POST">
               <fieldset>
                 <!-- <legend>Legend</legend> -->
                 <div class="form-group">
@@ -91,7 +98,3 @@
     
   </body>
 </html>
-
-<?php
-require "addRow.php";
-?>
