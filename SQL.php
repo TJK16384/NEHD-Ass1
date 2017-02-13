@@ -35,5 +35,20 @@ class DB
   public function Close() {
     self::$Connection =  NULL;
   }
+  
+  /*
+  public function ExecSQL($sql) {
+    self::Open();
+    
+    try {
+      $Query = self::$Connection->prepare($sql);
+    }
+    catch(PDOException $e) {
+      echo "ERROR: " . $e->getMessage();
+    }
+    
+    self::Close();
+  }
+  */
 }
 ?>

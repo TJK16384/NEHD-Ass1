@@ -15,7 +15,6 @@ if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
   $sql = "INSERT INTO Data (name,phone) VALUES (?, ?)";
   try {
     $PDO = DB::Open();
-    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     $Query = $PDO->prepare($sql);
     $Query->execute( array($name,$phone) );

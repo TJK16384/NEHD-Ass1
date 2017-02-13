@@ -50,15 +50,15 @@
       </table>
     </div>
     
-    <!-- Popup for adding a new entry -->
+    <!-- ADD NEW ENTRY POPUP -->
     <div id="Dialog_Add" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title">Add a New Entry to the Database</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+            <h3 class="modal-title">Add a New Entry to the Database</h3>
           </div>
           
           <div class="modal-body">
@@ -92,6 +92,34 @@
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
           -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- DELETE ENTRY POPUP -->
+    <div id="Dialog_Delete" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h3 class="modal-title">Delete This Entry?</h3>
+          </div>
+          <div class="modal-body">
+            <!-- FORM STARTS HERE -->
+            <form class="form-horizontal" action="Delete.php" method="POST">
+              <fieldset>
+                <p>Are you sure you wish to delete this row?</p>
+                <input hidden readonly id="ID" name="ID" type="text">
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                  <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+              </fieldset>
+            </form>
+            <!-- END FORM -->
+          </div>
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@ try {
     echo "<td class='Change'>";
     //echo "<button type='button' class='btn btn-success'>Add</button>";
     echo "<button type='button' class='btn btn-sm btn-primary'>Change</button>";
-    echo "<button type='button' class='btn btn-sm btn-danger'>Delete</button>";
+    echo "<button type='button' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#Dialog_Delete' data-id='" . $Result[$x]["id"] . "'>Delete</button>";
     echo "</td>";
     echo "</tr>";
   }
