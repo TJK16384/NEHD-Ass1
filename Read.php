@@ -17,14 +17,14 @@ try {
     //echo "<td>" . $x . "</td>";
     //for($y=0; $y<count($Result[$x]); $y++) {
     //}
-    echo "<td>" . $Result[$x]["id"] . "</td>";
-    echo "<td>" . $Result[$x]["name"] . "</td>";
-    echo "<td>" . formatPhoneNum($Result[$x]["phone"]) . "</td>";
+    echo "<td class='id'>" . $Result[$x]["id"] . "</td>";
+    echo "<td class='name'>" . $Result[$x]["name"] . "</td>";
+    echo "<td class='phone'>" . formatPhoneNum($Result[$x]["phone"]) . "</td>";
     
     echo "<td class='Change'>";
     //echo "<button type='button' class='btn btn-success'>Add</button>";
-    echo "<button type='button' class='btn btn-sm btn-primary'>Change</button>";
-    echo "<button type='button' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#Dialog_Delete' data-id='" . $Result[$x]["id"] . "'>Delete</button>";
+    echo "<button type='button' class='btn btn-sm btn-primary btnChange' data-toggle='modal' data-target='#DiagDB'>Change</button>";
+    echo "<button type='button' class='btn btn-sm btn-danger btnDelete' data-toggle='modal' data-target='#DiagDB'>Delete</button>";
     echo "</td>";
     echo "</tr>";
   }

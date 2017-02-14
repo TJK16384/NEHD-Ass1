@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/Style.css" />
     
-    <script src="./js/jquery.slim.min.js"></script>
-    <script src="./js/tether.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/tether.min.js"></script>  <!-- Required for Bootstrap Tooltips -->
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/Script.js"></script>
   </head>
@@ -37,9 +37,7 @@
             <th>Name</th>
             <th>Phone #</th>
             <th>
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Dialog_Add">
-                Add Entry
-              </button>
+              <button id="btnAdd" type="button" class="btn btn-success" data-toggle="modal" data-target="#DiagDB">Add Entry</button>
             </th>
           </tr>
         </thead>
@@ -50,22 +48,23 @@
       </table>
     </div>
     
-    <!-- ADD NEW ENTRY POPUP -->
-    <div id="Dialog_Add" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- DATABASE CHANGE POPUP -->
+    <div id="DiagDB" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h3 class="modal-title">Add a New Entry to the Database</h3>
+            <h3 class="modal-title">DIALOG</h3>
           </div>
           
           <div class="modal-body">
             <!-- FORM STARTS HERE -->
-            <form class="form-horizontal" action="Create.php" method="POST">
+            <form class="form-horizontal">
               <fieldset>
                 <!-- <legend>Legend</legend> -->
+                <p id="delConfirm">Are you <i>sure</i> you wish to delete this entry?</p>
                 <div class="form-group">
                   <label for="Name" class="col-lg-2 control-label">Name:</label>
                   <div class="col-lg-10">
@@ -75,7 +74,7 @@
                 <div class="form-group">
                   <label for="PhoneNum" class="col-lg-2 control-label">Phone #:</label>
                   <div class="col-lg-10">
-                    <input required class="form-control" id="PhoneNum" name="PhoneNum" placeholder="" type="tel">
+                    <input required class="form-control" id="PhoneNum" name="PhoneNum" placeholder="Phone #" type="tel">
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -92,34 +91,6 @@
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
           -->
-        </div>
-      </div>
-    </div>
-    
-    <!-- DELETE ENTRY POPUP -->
-    <div id="Dialog_Delete" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h3 class="modal-title">Delete This Entry?</h3>
-          </div>
-          <div class="modal-body">
-            <!-- FORM STARTS HERE -->
-            <form class="form-horizontal" action="Delete.php" method="POST">
-              <fieldset>
-                <p>Are you sure you wish to delete this row?</p>
-                <input hidden readonly id="ID" name="ID" type="text">
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-danger">Delete</button>
-                  <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-              </fieldset>
-            </form>
-            <!-- END FORM -->
-          </div>
         </div>
       </div>
     </div>
