@@ -74,7 +74,7 @@
                 <div class="form-group">
                   <label for="PhoneNum" class="col-lg-2 control-label">Phone #:</label>
                   <div class="col-lg-10">
-                    <input required class="form-control" id="PhoneNum" name="PhoneNum" placeholder="Phone #" type="tel">
+                    <input required class="form-control" id="PhoneNum" name="PhoneNum" pattern="[0-9]{10}" title="10 digits only" placeholder="Phone #" type="tel">
                   </div>
                 </div>
                 <div class="modal-footer">

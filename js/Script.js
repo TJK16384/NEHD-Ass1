@@ -14,7 +14,8 @@ $(function(){ // on DOM ready
   {
     $Dialog.find(".modal-title").text(sTitle);
     
-    // if true, show the text entry fields:
+    // true: show the text entry fields (create, update)
+    // false: hide the text entry fields (delete)
     // (this is how to spread a ternary op over multiple lines, btw)
     // (use an if-else instead, kids)
     bFields ? (
@@ -27,10 +28,25 @@ $(function(){ // on DOM ready
       $txtConfirm.show()
     );
     
-    $btnSubmit
-      .attr("class","btn btn-"+sBtnStyle)
+    $btnSubmit.attr("class","btn btn-"+sBtnStyle)
       .text( sTitle.split(" ")[0] ) //change the button text to 1st word of title
       ;
+  }
+  
+  function stripNonNumeric(sNum)
+  {
+    sNum = sNum.trim(); // trim whitespace at both ends
+    for(x=0; x<sNum.length; )
+    {
+      if( !$.isNumeric(sNum[x]) ) {
+        sNum = sNum.replace(sNum[x],"");
+        //don't increment counter, since length changed
+      }
+      else {
+        x++;
+      }
+    }
+    return sNum;
   }
   
   // CREATE
@@ -44,7 +60,7 @@ $(function(){ // on DOM ready
     changeDialog("Update This Entry",true,"primary");
     $Row = $(this).closest("tr");
     $Dialog.find("input#Name").val( $Row.find(".name").text() );
-    $Dialog.find("input#PhoneNum").val( $Row.find(".phone").text() );
+    $Dialog.find("input#PhoneNum").val( stripNonNumeric($Row.find(".phone").text()) );
     sExtraData = "Action=UPDATE&ID=" + $Row.find(".id").text();
   });
   
